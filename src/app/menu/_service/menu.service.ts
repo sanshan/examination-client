@@ -2,21 +2,19 @@ import {Injectable} from '@angular/core'
 import {Observable} from "rxjs"
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout"
 import {map, shareReplay} from "rxjs/operators"
-import {GetMenuByIdGQL} from "@app/graphql";
+import {GetMenuByIdGQL, MenuType} from "@app/graphql"
+import {IMenuService, TMenu} from './menu-service.interface'
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class MenuService {
-  /**
-   * Стрим для слежения за размером экрана
-   */
+export class MenuService implements IMenuService {
   public isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
-    );
+    )
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -24,13 +22,14 @@ export class MenuService {
   ) {
   }
 
-  /**
-   * Получаем меню по ID
-   *
-   * @param _id
-   */
-  public getMenuByID(_id: string) {
-    return this.getMenuByIdGQL.watch({_id}).valueChanges
-  }
+  public getMenuById = (_id: string): Observable<TMenu> => this.getMenuByIdGQL.watch({_id}).valueChanges
+    .pipe(
+      map(result => {
+        return {
+          data: result.data.getMenuById as MenuType,
+          loading: result.loading
+        } as TMenu
+      })
+    )
 
 }
