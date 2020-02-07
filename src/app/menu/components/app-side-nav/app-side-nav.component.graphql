@@ -1,0 +1,12 @@
+query getMenuById($_id: ID){
+  getMenuById(_id: $_id){
+    _id
+    title
+    description
+    items {
+      _id
+      title
+      description
+    }
+  }
+}

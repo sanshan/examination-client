@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core'
 import {Observable} from 'rxjs'
-import {MenuService} from "@menu/_service/menu.service"
-import {IMenu} from "@menu/components/_shared/menu.interfaces"
+// import {MenuService} from "@menu/_service/menu.service"
+// import {IMenu} from "@menu/components/_shared/menu.interfaces"
 
 @Component({
   selector: 'app-side-nav',
@@ -18,16 +18,18 @@ export class AppSideNavComponent implements OnInit {
   /**
    * Объект меню
    */
-  public menu: IMenu
+    // public menu: IMenu
+  public menu: any
 
-  constructor(private menuService: MenuService) {
+  // constructor(private menuService: MenuService) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.isHandset$ = this.menuService.isHandset$
-    this.menuService.getMenuByID('5e37fb3e33df579e48309ffd').subscribe(({data}) => {
-      this.menu = data.menu
-    })
+    // this.isHandset$ = this.menuService.isHandset$
+    // this.menuService.getMenuByID('5e37fb3e33df579e48309ffd').subscribe(({data}) => {
+    //   this.menu = data.menu
+    // })
   }
 
 }
