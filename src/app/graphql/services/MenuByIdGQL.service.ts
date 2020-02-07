@@ -1,9 +1,7 @@
 import {Injectable} from "@angular/core"
 import {Query} from "apollo-angular"
 import gql from "graphql-tag"
-
-// Надо создать алиас
-import {IMenu} from "../../menu/components/_shared/menu.interfaces"
+import {IMenu} from "@menu/components/_shared/menu.interfaces"
 
 export interface IMenuByIdGQL {
   menu: IMenu

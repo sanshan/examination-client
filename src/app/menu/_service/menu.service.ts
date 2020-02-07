@@ -2,9 +2,7 @@ import {Injectable} from '@angular/core'
 import {Observable} from "rxjs"
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout"
 import {map, shareReplay} from "rxjs/operators"
-
-// Надо сделать алиас
-import {MenuByIdGQL, IMenuByIdGQL} from "../../graphql/services/MenuByIdGQL.service"
+import {IMenuByIdGQL, MenuByIdGQL} from "@app/graphql/services/MenuByIdGQL.service"
 import {ApolloQueryResult} from "apollo-client"
 import {MenuServiceInterface} from "./menu-service.interface"
 

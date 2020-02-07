@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core'
 
-import {CoreModule} from './core/core.module'
-import {MenuModule} from './menu/menu.module'
+import {CoreModule} from '@app/core/core.module'
+import {MenuModule} from '@menu/menu.module'
 
-import {AppComponent} from './app.component'
+import {AppComponent} from '@app/app.component'
 
 @NgModule({
   declarations: [

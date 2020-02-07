@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core'
 import {Observable} from 'rxjs'
-
-// Надо сделать алиас
-import {MenuService} from "../../_service/menu.service"
-import {IMenu} from "../_shared/menu.interfaces"
+import {MenuService} from "@menu/_service/menu.service"
+import {IMenu} from "@menu/components/_shared/menu.interfaces"
 
 @Component({
   selector: 'app-side-nav',

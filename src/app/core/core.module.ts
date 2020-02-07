@@ -2,9 +2,9 @@ import {NgModule} from '@angular/core'
 import {CommonModule} from '@angular/common'
 
 import {BrowserModule} from '@angular/platform-browser'
-import {RoutingModule} from '../routing/routing.module'
+import {RoutingModule} from '@app/routing/routing.module'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
-import {GraphQLModule} from '../graphql/graphql.module'
+import {GraphQLModule} from '@app/graphql/graphql.module'
 import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
