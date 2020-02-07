@@ -8,9 +8,9 @@ import {MatSidenavModule} from '@angular/material/sidenav'
 import {MatIconModule} from '@angular/material/icon'
 import {MatListModule} from '@angular/material/list'
 
-import {AppSideNavComponent} from './components/app-side-nav/app-side-nav.component';
-import {AppSideNavItemComponent} from './components/app-side-nav-item/app-side-nav-item.component'
-import {ApolloModule} from "apollo-angular";
+import {AppSideNavComponent} from '@menu/components/app-side-nav/app-side-nav.component'
+import {AppSideNavItemComponent} from '@menu/components/app-side-nav-item/app-side-nav-item.component'
+import {ApolloModule} from "apollo-angular"
 
 @NgModule({
   declarations: [

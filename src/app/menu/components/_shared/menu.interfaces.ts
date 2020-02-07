@@ -1,4 +1,4 @@
-import {ID} from "../../../_shared/shared.interfaces";
+import {ID} from "@app/_shared/shared.interfaces"
 
 export interface IMenuItem {
   readonly _id: ID

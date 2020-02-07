@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {IMenuItem} from "../_shared/menu.interfaces";
+import {Component, Input, OnInit} from '@angular/core'
+import {IMenuItem} from "@menu/components/_shared/menu.interfaces"
 
 @Component({
   selector: 'app-side-nav-item',
