@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core'
 import {Observable} from 'rxjs'
+
+// Надо сделать алиас
 import {MenuService} from "../../_service/menu.service"
 import {IMenu} from "../_shared/menu.interfaces"
 
@@ -15,7 +17,10 @@ export class AppSideNavComponent implements OnInit {
    */
   public isHandset$: Observable<boolean>
 
-  public menu$: IMenu
+  /**
+   * Объект меню
+   */
+  public menu: IMenu
 
   constructor(private menuService: MenuService) {
   }
@@ -23,7 +28,7 @@ export class AppSideNavComponent implements OnInit {
   ngOnInit(): void {
     this.isHandset$ = this.menuService.isHandset$
     this.menuService.getMenuByID('5e37fb3e33df579e48309ffd').subscribe(({data}) => {
-      this.menu$ = data.menu
+      this.menu = data.menu
     })
   }
 

@@ -1,4 +1,5 @@
-import {ID} from "../../../_shared/shared.interfaces";
+// Надо сделать алиас
+import {ID} from "../../../_shared/shared.interfaces"
 
 export interface IMenuItem {
   readonly _id: ID

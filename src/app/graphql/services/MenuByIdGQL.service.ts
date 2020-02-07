@@ -5,14 +5,14 @@ import gql from "graphql-tag"
 // Надо создать алиас
 import {IMenu} from "../../menu/components/_shared/menu.interfaces"
 
-export interface MenuByIdGQLResponse {
+export interface IMenuByIdGQL {
   menu: IMenu
 }
 
 @Injectable({
   providedIn: 'root'
 })
-export class MenuByIdGQL extends Query<MenuByIdGQLResponse> {
+export class MenuByIdGQL extends Query<IMenuByIdGQL> {
   document = gql`
       query menu($_id: ID){
         menu(_id: $_id){
