@@ -42,6 +42,25 @@ export type RootQueryGetMenuByIdArgs = {
   _id?: Maybe<Scalars['ID']>
 };
 
+export type GetAllMenusQueryVariables = {};
+
+
+export type GetAllMenusQuery = (
+  { __typename?: 'RootQuery' }
+  & {
+  getAllMenus: Maybe<Array<Maybe<(
+    { __typename?: 'MenuType' }
+    & Pick<MenuType, '_id' | 'title' | 'description'>
+    & {
+    items: Maybe<Array<Maybe<(
+      { __typename?: 'MenuItemType' }
+      & Pick<MenuItemType, '_id' | 'title' | 'description' | 'parent'>
+      )>>>
+  }
+    )>>>
+}
+  );
+
 export type GetMenuByIdQueryVariables = {
   _id?: Maybe<Scalars['ID']>
 };
@@ -62,6 +81,30 @@ export type GetMenuByIdQuery = (
     )>
 }
   );
+
+export const GetAllMenusDocument = gql`
+  query getAllMenus {
+    getAllMenus {
+      _id
+      title
+      description
+      items {
+        _id
+        title
+        description
+        parent
+      }
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root'
+})
+export class GetAllMenusGQL extends Apollo.Query<GetAllMenusQuery, GetAllMenusQueryVariables> {
+  document = GetAllMenusDocument;
+
+}
 
 export const GetMenuByIdDocument = gql`
   query getMenuById($_id: ID) {

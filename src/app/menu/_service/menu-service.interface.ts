@@ -1,9 +1,13 @@
 // import {Observable} from "rxjs"
-// import {ApolloQueryResult} from "apollo-client"
-// import {IMenuByIdGQL} from "@app/graphql/services/MenuByIdGQL.service"
+// import {MenuType} from "@app/graphql";
+//
+// export type getMenuByIDResponseType = {
+//   data: MenuType
+//   loading: boolean
+// }
 //
 // export interface MenuServiceInterface {
 //   isHandset$: Observable<boolean>
 //
-//   getMenuByID(_id: string): Observable<ApolloQueryResult<IMenuByIdGQL>>
+//   getMenuByID(_id: string): getMenuByIDResponseType
 // }

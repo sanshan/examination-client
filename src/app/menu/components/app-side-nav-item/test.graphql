@@ -1,0 +1,13 @@
+query getAllMenus{
+  getAllMenus{
+    _id
+    title
+    description
+    items {
+      _id
+      title
+      description
+      parent
+    }
+  }
+}
