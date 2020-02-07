@@ -2,36 +2,34 @@ import {Injectable} from '@angular/core'
 import {Observable} from "rxjs"
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout"
 import {map, shareReplay} from "rxjs/operators"
-import {IMenuByIdGQL, MenuByIdGQL} from "@app/graphql/services/MenuByIdGQL.service"
-import {ApolloQueryResult} from "apollo-client"
-import {MenuServiceInterface} from "./menu-service.interface"
+import {GetMenuByIdGQL, MenuType} from "@app/graphql"
+import {IMenuService, TMenu} from './menu-service.interface'
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class MenuService implements MenuServiceInterface {
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    private menuByIdGQL: MenuByIdGQL
-  ) {
-  }
-
-  /**
-   * Стрим для слежения за размером экрана
-   */
+export class MenuService implements IMenuService {
   public isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
-    );
+    )
 
-  /**
-   * Получаем меню по ID
-   *
-   * @param _id
-   */
-  public getMenuByID(_id: string): Observable<ApolloQueryResult<IMenuByIdGQL>> {
-    return this.menuByIdGQL.watch({_id}).valueChanges
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private getMenuByIdGQL: GetMenuByIdGQL
+  ) {
   }
+
+  public getMenuById = (_id: string): Observable<TMenu> => this.getMenuByIdGQL.watch({_id}).valueChanges
+    .pipe(
+      map(result => {
+        return {
+          data: result.data.getMenuById as MenuType,
+          loading: result.loading
+        } as TMenu
+      })
+    )
 
 }

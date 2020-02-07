@@ -1,9 +1,13 @@
 import {Observable} from "rxjs"
-import {ApolloQueryResult} from "apollo-client"
-import {IMenuByIdGQL} from "@app/graphql/services/MenuByIdGQL.service"
+import {MenuType} from "@app/graphql";
 
-export interface MenuServiceInterface {
+export type TMenu = {
+  data: MenuType
+  loading: boolean
+}
+
+export interface IMenuService {
   isHandset$: Observable<boolean>
 
-  getMenuByID(_id: string): Observable<ApolloQueryResult<IMenuByIdGQL>>
+  getMenuById: (_id: string) => Observable<TMenu>
 }
