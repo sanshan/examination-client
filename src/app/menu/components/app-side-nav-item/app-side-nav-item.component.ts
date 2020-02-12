@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core'
-import {IMenuItem} from "@menu/components/_shared/menu.interfaces"
+import {MenuItemType} from '@app/graphql';
+
 
 @Component({
   selector: 'app-side-nav-item',
@@ -9,7 +10,7 @@ import {IMenuItem} from "@menu/components/_shared/menu.interfaces"
 export class AppSideNavItemComponent implements OnInit {
 
   @Input()
-  item: IMenuItem
+  item: MenuItemType
 
   constructor() {
   }

@@ -10,17 +10,17 @@ import {IMenuService, TMenu} from './menu-service.interface'
   providedIn: 'root'
 })
 export class MenuService implements IMenuService {
-  public isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    )
-
   constructor(
     private breakpointObserver: BreakpointObserver,
     private getMenuByIdGQL: GetMenuByIdGQL
   ) {
   }
+
+  public isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    )
 
   public getMenuById = (_id: string): Observable<TMenu> => this.getMenuByIdGQL.watch({_id}).valueChanges
     .pipe(

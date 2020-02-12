@@ -1,12 +1,28 @@
-import {TestBed} from '@angular/core/testing'
+import {ApolloTestingController, ApolloTestingModule,} from 'apollo-angular/testing';
+import {TestBed} from "@angular/core/testing";
+import {AppSideNavComponent} from "@menu/components/app-side-nav/app-side-nav.component";
 
-import {MenuService} from '@menu/_service/menu.service'
+describe('Tests for MenuService:', () => {
 
-describe('MenuService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}))
+  let backend: ApolloTestingController;
 
-  it('should be created', () => {
-    const service: MenuService = TestBed.get(MenuService)
-    expect(service).toBeTruthy()
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [ApolloTestingModule],
+      providers: [ApolloTestingController]
+    });
+
+    // backend = TestBed.inject()
   });
+
+  it('expect and answer', function () {
+    TestBed.createComponent(AppSideNavComponent)
+
+
+  });
+
+  afterEach(() => {
+    backend.verify();
+  });
+
 });
