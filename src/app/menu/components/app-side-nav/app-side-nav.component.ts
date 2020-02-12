@@ -44,7 +44,7 @@ export class AppSideNavComponent implements OnInit {
    *
    * @param _id
    */
-  private getMenu(_id: string) {
+  public getMenu(_id: string) {
     return this.menuService.getMenuById(_id);
   }
 
