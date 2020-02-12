@@ -2,6 +2,15 @@ import {ApolloTestingController, ApolloTestingModule,} from 'apollo-angular/test
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {AppSideNavComponent} from "@menu/components/app-side-nav/app-side-nav.component";
 import {GetMenuByIdDocument} from "@app/graphql";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CommonModule} from "@angular/common";
+import {LayoutModule} from "@angular/cdk/layout";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatButtonModule} from "@angular/material/button";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatIconModule} from "@angular/material/icon";
+import {MatListModule} from "@angular/material/list";
+import {BrowserModule} from "@angular/platform-browser";
 
 describe('Tests for MenuService:', () => {
 
@@ -11,7 +20,18 @@ describe('Tests for MenuService:', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ApolloTestingModule],
+      imports: [
+        ApolloTestingModule,
+        BrowserAnimationsModule,
+        CommonModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule,
+        BrowserModule,
+      ],
       providers: [ApolloTestingController],
     });
 
