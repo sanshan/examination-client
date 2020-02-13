@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core'
 import {Observable} from "rxjs"
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout"
-import {map, shareReplay} from "rxjs/operators"
-import {GetMenuByIdGQL, MenuType} from "@app/graphql"
+import {map, shareReplay, take} from "rxjs/operators"
+import {GetMenuByIdGQL, MenuType} from "../../graphql"
 import {IMenuService, TMenu} from './menu-service.interface'
 
 
@@ -29,7 +29,7 @@ export class MenuService implements IMenuService {
           data: result.data.getMenuById as MenuType,
           loading: result.loading
         } as TMenu
-      })
+      }),
+      take<TMenu>(1)
     )
-
 }

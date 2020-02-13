@@ -1,5 +1,5 @@
 import {Observable} from "rxjs"
-import {MenuType} from "@app/graphql";
+import {MenuType} from "../../graphql";
 
 export type TMenu = {
   data: MenuType
