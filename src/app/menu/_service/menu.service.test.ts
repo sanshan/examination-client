@@ -58,7 +58,7 @@ describe('MenuService', () => {
 
     test('correct parameter should present in operation', () => {
       getMenuByIdMethod(mockMenuId).subscribe(
-        (menu) => expect(menu).toEqual(expectedMenu, 'should return expected menu(my msg)'),
+        (menu) => expect(menu).toEqual(expectedMenu, 'should return expected menu'),
         fail
       );
 
@@ -70,7 +70,7 @@ describe('MenuService', () => {
 
     test('should return expected menu', () => {
       getMenuByIdMethod(mockMenuId).subscribe(
-        (menu) => expect(menu).toEqual(expectedMenu, 'should return expected menu(my msg)'),
+        (menu) => expect(menu).toEqual(expectedMenu, 'should return expected menu'),
         fail
       );
 
@@ -83,6 +83,26 @@ describe('MenuService', () => {
           getMenuById: mockMenu
         },
       });
+    });
+
+    test('should be OK returning no menu', () => {
+      const mockWrongMenuId = 42
+
+      getMenuByIdMethod(mockWrongMenuId).subscribe(
+        (menu) => expect(menu.data).toEqual(null, 'should return null'),
+        fail
+      );
+
+      // MenuService should have made one request to get menu by ID from expected Document
+      const op = apolloTestingController.expectOne(GetMenuByIdDocument)
+
+      // Respond with the mock menu
+      op.flush({
+        data: {
+          getMenuById: null
+        },
+      });
+
     });
 
   });
