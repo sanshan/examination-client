@@ -68,7 +68,7 @@ describe('MenuService', () => {
 
     });
 
-    test('should return expected menu', () => {
+    test('should return expected menu (called once)', () => {
       getMenuByIdMethod(mockMenuId).subscribe(
         (menu) => expect(menu).toEqual(expectedMenu, 'should return expected menu'),
         fail
